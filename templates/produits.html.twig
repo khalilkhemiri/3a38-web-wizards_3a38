@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+ 
+
+      <section class="bg-light p-3">
+        <h1>Les produits</h1>
+    </section>
+      
+     <div  style=" width:75%;margin-left:10% ;margin-top:0%; ">
+     <div class="col-md-3" style=" width:63%;margin-left:0% ;>
+    {{ include('filter.html.twig') }}</div>
+    <section class="row"  >
+        {% for produit in produits %}
+            <div class="col-4 mt-4">
+                <div class="border border-dark rounded p-2 clearfix">
+                    <h2>{{ produit.nom }}</h2>
+                    <img class="w-100" src="{{asset('assets/images/') ~ produit.image ~ ".jpg"}}" alt="Image de {{ produit.nom }}">
+                     <p>{{ produit.prix }} TND</p>
+                     <p>{{ produit.categories }} </p>
+                    <hr>
+                    <a href="{{path("cart_add", {id: produit.id})}}" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Ajouter
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+     
+{% endblock %}

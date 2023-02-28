@@ -1,0 +1,34 @@
+{% extends 'base_home.html.twig' %}
+
+
+{% block title %}Animal{% endblock %}
+
+{% block body %}
+<div class="container" style="padding-top: 220px;">
+    <h1 class="animal-heading">Animal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ animal.nom }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ animal.age }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ animal.poids }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_animal_index') }}" class="button button4">Retour à la liste</a>
+
+
+
+
+{% endblock %}

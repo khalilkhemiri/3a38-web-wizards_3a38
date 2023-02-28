@@ -1,0 +1,13 @@
+{% extends 'base_home.html.twig' %}
+
+
+{% block title %}New Animal{% endblock %}
+
+{% block body %}
+<div class="container" style="padding-top: 220px;">
+    <h1>Create new Animal</h1>
+
+    {{ include('animal/_form.html.twig') }}
+
+    <a href="{{ path('app_animal_index') }}" class="button button4">Back to List</a>
+{% endblock %}

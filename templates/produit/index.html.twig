@@ -1,0 +1,70 @@
+{% extends 'base_magasin.html.twig' %}
+
+{% block title %}
+
+Responsable Magasin
+{% endblock %}
+
+{% block body %}
+ <div id="hero" class="d-flex justify-content-center align-items-center">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+<div class="container mt-3" width: 100%; >
+ 
+    <table class="table">
+    <div class="container mt-3" width: 100%;>
+     <h1>Liste des Produits</h1>
+        <thead>
+            <tr> 
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Prix</th>  
+                <th>Stock</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+          </div>
+        <tbody>
+        {% for produit in produits %}
+      
+            <tr >
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.description }}</td>
+                <td>
+                <img src={{asset('assets/images/') ~ produit.image ~ ".jpg"}} width="5%"  />
+                </td>
+                <td >{{ produit.prix }}</td>
+                <td>{{ produit.stock }}</td>
+                <td>
+                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="edit" data-toggle="modal"><i class="bi bi-pen"></i></a>
+                    <a href="{{ path('delete_produit', {'id': produit.id}) }}" class="delete" data-toggle="modal"><i class="bi bi-trash3-fill"></i></a>
+                </td>
+            </tr>
+          
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produit_new') }}">Ajouter</a>
+   </div>
+    </div>
+    <style>
+    #hero {
+    margin-bottom: 0;
+    height: 100vh;
+  }
+     #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  #hero .container {
+    padding-bottom: 63px;
+  }
+    </style>
+{% endblock %}

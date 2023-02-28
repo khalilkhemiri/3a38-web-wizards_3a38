@@ -1,0 +1,33 @@
+{% extends 'base_magasin.html.twig' %}
+
+
+
+{% block title %}New Categorie{% endblock %}
+
+{% block body %}
+<div id="hero" class="d-flex justify-content-center align-items-center">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+<div class="container mt-3">
+    <h1>Ajouter une Categorie</h1>
+
+    {{ include('categorie/_form.html.twig') }}
+
+    <a href="{{ path('app_categorie_index') }}">retour a la liste</a>
+    </div>
+      </div>
+     </div>
+     <style>
+    #hero {
+    margin-bottom: 0;
+    height: 100vh;
+  }
+     #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  #hero .container {
+    padding-bottom: 63px;
+  }
+    </style>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base_home.html.twig' %}
+
+{% block title %}Animal index{% endblock %}
+
+{% block body %}
+    <div class="container" style="padding-top: 250px;">
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <h1 class="animal-heading">Liste des Animaux</h1>
+            <a href="{{ path('app_animal_new') }}" class="btn btn-primary mt-5">Créer un nouveau</a>
+        </div>
+    </div>
+
+    <table class="table" style="width: 50%; margin: auto;">
+        <thead>
+        <tr>
+            <th><h4>NOM</h4></th>
+            <th><h4>AGE</h4></th>
+            <th><h4>POIDS</h4></th>
+            <th class="actions-header"><h4>ACTIONS</h4></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td>{{ animal.nom }}</td>
+                <td>{{ animal.age }}</td>
+                <td>{{ animal.poids }}</td>
+                <td>
+                    <div class="button-container">
+                        <a href="{{ path('app_animal_show', {'id': animal.id}) }}"><button class="button button1">Afficher</button></a>
+                        <a href="{{ path('app_animal_edit', {'id': animal.id}) }}"><button class="button button2">Editer</button></a>
+                        <form method="post" action="{{ path('app_animal_delete', {'id': animal.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ animal.id) }}">
+                            <button class="button button3">Supprimer</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
